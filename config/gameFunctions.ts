@@ -18,6 +18,41 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
     label: "Production Controls",
     description: "Control factory and production systems",
     functions: {
+        start: {
+            objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+            functionName: "Start",
+            generateTransaction: true,
+            label: "Start",
+            description: "Back to start"
+          },
+          nexus: {
+            objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+            functionName: "Nexus",
+            generateTransaction: true,
+            label: "Nexus",
+            description: "To the menu"
+          },
+          healthcare: {
+            objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+            functionName: "Healthcare",
+            generateTransaction: true,
+            label: "Healthcare",
+            description: "To the healthcare scene"
+          },
+          citizen: {
+            objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+            functionName: "Citizen",
+            generateTransaction: true,
+            label: "Citizen",
+            description: "To the citizen scene"
+          },
+          farm: {   
+            objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+            functionName: "Farm",
+            generateTransaction: true,
+            label: "Farm",
+            description: "To the farm scene"
+          },
       factory: {
         objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
         functionName: "Factory",

@@ -3,9 +3,14 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   modules: [
-    '@nuxtjs/tailwindcss'
+    '@nuxt/ui'
   ],
-  ssr: false, // Since we're running locally and making client-side API calls
+  ui: {
+    global: true
+  },
+  colorMode: {
+    preference: 'dark'
+  },
   app: {
     head: {
       title: 'UE5 Game Controller',
