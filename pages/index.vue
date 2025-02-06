@@ -44,9 +44,7 @@
           <pre class="bg-gray-700 p-4 rounded text-gray-300 overflow-x-auto">{{ JSON.stringify(result, null, 2) }}</pre>
         </div>
 
-        <div v-if="error" class="mt-4 p-4 bg-red-900/50 text-red-300 rounded-lg border border-red-700">
-          {{ error }}
-        </div>
+       
       </div>
     </div>
   </NuxtLayout>
@@ -69,13 +67,13 @@ const callFunction = async (functionConfig: GameFunction) => {
   
   try {
     result.value = await callGameFunction(functionConfig);
-    toast.add({
-      title: 'Success',
-      description: `${functionConfig.label} executed successfully`,
-      icon: 'i-heroicons-check-circle',
-      color: 'green',
-      timeout: 2000
-    })
+    // toast.add({
+    //   title: 'Success',
+    //   description: `${functionConfig.label} executed successfully`,
+    //   icon: 'i-heroicons-check-circle',
+    //   color: 'green',
+    //   timeout: 2000
+    // })
   } catch (e) {
     const errorMessage = e instanceof Error ? e.message : 'An error occurred';
     error.value = errorMessage;
@@ -84,7 +82,7 @@ const callFunction = async (functionConfig: GameFunction) => {
       description: errorMessage,
       icon: 'i-heroicons-exclamation-circle',
       color: 'red',
-      timeout: 5000
+      timeout: 1000
     })
   } finally {
     isLoading.value = false;
