@@ -73,3 +73,14 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## Run UE5 Controller
+
+- Install node.js on windows machine
+- run this as admin in powershell: Add-Content -Path "C:\Windows\System32\drivers\etc\hosts" -Value "`n127.0.0.1    ue5-controller.local" -Force
+- Run `node .output/server/index.mjs`
+- Visit http://cf-controller.local:3000/
+
+```bash
+node .output/server/index.mjs
+```
