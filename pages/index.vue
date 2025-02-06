@@ -2,7 +2,22 @@
   <NuxtLayout name="default">
     <div class="min-h-screen bg-gray-900 dark:bg-gray-900 text-gray-100 p-4">
       <div class="container mx-auto">
-        <h1 class="text-2xl font-bold mb-6 text-gray-100">Connected Futures Controller</h1>
+        <div class="flex justify-between items-center mb-6">
+          <h1 class="text-2xl font-bold text-gray-100">Connected Futures Controller</h1>
+          <div class="flex items-center gap-2">
+            <div 
+              class="w-3 h-3 rounded-full"
+              :class="{
+                'bg-green-500': status === 'connected',
+                'bg-red-500': status === 'disconnected',
+                'bg-yellow-500 animate-pulse': status === 'checking'
+              }"
+            />
+            <span class="text-sm">
+              {{ status === 'connected' ? 'Connected' : status === 'disconnected' ? 'Disconnected' : 'Checking...' }}
+            </span>
+          </div>
+        </div>
         
         <div class="space-y-8">
           <div 
@@ -49,8 +64,20 @@ import { gameFunctionGroups, type GameFunction } from '~/config/gameFunctions';
 
 const result = ref(null);
 const toast = useToast()
+const { status, info } = useConnectionStatus()
 
 const callFunction = async (functionConfig: GameFunction) => {
+  if (status.value !== 'connected') {
+    toast.add({
+      title: 'Error',
+      description: 'Not connected to UE5 server',
+      icon: 'i-heroicons-exclamation-circle',
+      color: 'red',
+      timeout: 1000
+    })
+    return
+  }
+
   try {
     const { data, error } = await useFetch('/api/game', {
       method: 'POST',
