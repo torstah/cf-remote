@@ -39,7 +39,7 @@
                 class="border-b border-gray-700 last:border-b-0 pb-4 last:pb-0"
               >
                 <button
-                  @click="() => handleFunctionCall(func)"
+                  @click="() => handleFunction(func)"
                   class="bg-gray-600 hover:bg-gray-700 text-gray-100 font-bold py-2 px-4 rounded w-full transition-colors duration-200 mb-2"
                 >
                   {{ func.label }}
@@ -55,7 +55,9 @@
         </div>
 
         <div class="mt-8">
-          <ResolutionSettings />
+          <UModal v-model="showResolutionModal">
+            <ResolutionSettings @resolution-set="handleFunctionCall" />
+          </UModal>
         </div>
       </div>
     </div>
@@ -70,6 +72,18 @@ const result = ref(null);
 const toast = useToast()
 const { status, info } = useConnectionStatus()
 const { gameFunctionGroups, callFunction } = useGameFunctions()
+
+const showResolutionModal = ref(false)
+const selectedFunction = ref<GameFunction | null>(null)
+
+const handleFunction = (func: GameFunction) => {
+  if (func.requiresInput) {
+    selectedFunction.value = func
+    showResolutionModal.value = true
+  } else {
+    handleFunctionCall(func)
+  }
+}
 
 const handleFunctionCall = async (functionConfig: GameFunction) => {
   try {

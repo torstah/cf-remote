@@ -2,7 +2,11 @@
   <div class="space-y-4">
     <h2 class="text-xl font-semibold">Resolution Settings</h2>
     
-    <UForm :validate="validate" @submit="handleSubmit">
+    <UForm 
+      :validate="validate" 
+      @submit="handleSubmit"
+      :state="form"
+    >
       <div class="grid grid-cols-2 gap-4">
         <UFormGroup label="Width" name="x">
           <UInput
@@ -36,7 +40,7 @@
 
 <script setup lang="ts">
 const toast = useToast()
-const { gameFunctionGroups, callFunction } = useGameFunctions()
+const emit = defineEmits(['resolution-set'])
 
 const form = ref({
   x: 1920,
@@ -65,10 +69,7 @@ const validate = (data: typeof form.value) => {
 
 const handleSubmit = async () => {
   try {
-    const setResolutionFn = gameFunctionGroups.settings.functions.setResolution
-    
-    await callFunction({
-      ...setResolutionFn,
+    emit('resolution-set', {
       parameters: {
         x: parseInt(form.value.x),
         y: parseInt(form.value.y)
@@ -81,6 +82,7 @@ const handleSubmit = async () => {
       color: 'green'
     })
   } catch (error) {
+    console.error('Submit error:', error)
     toast.add({
       title: 'Error',
       description: error instanceof Error ? error.message : 'Failed to change resolution',

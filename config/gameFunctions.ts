@@ -5,6 +5,10 @@ export interface GameFunction {
   parameters?: Record<string, any>;
   label: string;
   description?: string;
+  group?: string;
+  key?: string;
+  requiresInput?: boolean;
+  component?: string;
 }
 
 export interface FunctionGroup {
@@ -147,10 +151,8 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         generateTransaction: true,
         label: "Set Resolution",
         description: "Change the game resolution",
-        parameters: {
-          x: 1920,
-          y: 1080
-        }
+        requiresInput: true,
+        component: 'ResolutionSettings'
       }
     }
   }
