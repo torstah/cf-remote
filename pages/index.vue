@@ -56,7 +56,12 @@
 
         <div class="mt-8">
           <UModal v-model="showResolutionModal">
-            <ResolutionSettings @resolution-set="handleFunctionCall" />
+            <ResolutionSettings 
+              @resolution-set="(config) => {
+                handleFunctionCall(config);
+                showResolutionModal.value = false;
+              }" 
+            />
           </UModal>
         </div>
       </div>

@@ -2,6 +2,10 @@
   <div class="space-y-4">
     <h2 class="text-xl font-semibold">Resolution Settings</h2>
     
+    <div v-if="currentResolution" class="text-sm text-gray-400 mb-4">
+      Current Resolution: {{ currentResolution.x }} x {{ currentResolution.y }}
+    </div>
+    
     <UForm 
       :validate="validate" 
       @submit="handleSubmit"
@@ -42,9 +46,29 @@
 const toast = useToast()
 const emit = defineEmits(['resolution-set'])
 
+const currentResolution = ref(null)
 const form = ref({
   x: 1920,
   y: 1080
+})
+
+const fetchCurrentResolution = async () => {
+  try {
+    const { data } = await useFetch('/api/resolution')
+    currentResolution.value = data.value
+    // Optionally update form with current values
+    if (data.value) {
+      form.value.x = data.value.x
+      form.value.y = data.value.y
+    }
+  } catch (error) {
+    console.error('Failed to fetch current resolution:', error)
+  }
+}
+
+// Fetch current resolution when component mounts
+onMounted(() => {
+  fetchCurrentResolution()
 })
 
 const validate = (data: typeof form.value) => {
@@ -69,7 +93,11 @@ const validate = (data: typeof form.value) => {
 
 const handleSubmit = async () => {
   try {
+    // Emit the full function config
     emit('resolution-set', {
+      objectPath: '/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1',
+      functionName: 'SetResolution',
+      generateTransaction: true,
       parameters: {
         x: parseInt(form.value.x),
         y: parseInt(form.value.y)
