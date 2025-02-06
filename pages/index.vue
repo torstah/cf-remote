@@ -67,16 +67,16 @@ const toast = useToast()
 const { status, info } = useConnectionStatus()
 
 const callFunction = async (functionConfig: GameFunction) => {
-  if (status.value !== 'connected') {
-    toast.add({
-      title: 'Error',
-      description: 'Not connected to UE5 server',
-      icon: 'i-heroicons-exclamation-circle',
-      color: 'red',
-      timeout: 1000
-    })
-    return
-  }
+//   if (status.value !== 'connected') {
+//     toast.add({
+//       title: 'Error',
+//       description: 'Not connected to UE5 server',
+//       icon: 'i-heroicons-exclamation-circle',
+//       color: 'red',
+//       timeout: 1000
+//     })
+//     return
+//   }
 
   try {
     const { data, error } = await useFetch('/api/game', {
