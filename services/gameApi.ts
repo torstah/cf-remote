@@ -1,18 +1,13 @@
 import type { GameFunction } from '~/config/gameFunctions';
 
 export const useGameApi = () => {
-  const baseUrl = 'http://localhost:30010';
-
   const callGameFunction = async (functionConfig: GameFunction) => {
     try {
-      const response = await fetch(`${baseUrl}/remote/object/call`, {
-        method: 'PUT',
+      const response = await fetch('/api/game', {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Access-Control-Allow-Origin': '*',
         },
-        mode: 'cors',
         body: JSON.stringify({
           objectPath: functionConfig.objectPath,
           functionName: functionConfig.functionName,
