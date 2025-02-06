@@ -10,4 +10,4 @@ echo.
 echo Setup complete! You can now run:
 echo - start.bat to start only the controller
 echo - start-game-and-controller.bat to start both game and controller
-pause 
+exit 

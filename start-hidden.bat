@@ -1,5 +1,5 @@
 @echo off
-echo Starting CF Controller in background...
-start /min cmd /c "npm run preview"
-timeout /t 5
-start http://cf-controller.local:3000 
+start /min cmd /c "node .output/server/index.mjs"
+timeout /t 2 /nobreak > nul
+start http://cf-controller.local:3000
+exit 
