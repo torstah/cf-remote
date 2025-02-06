@@ -73,6 +73,29 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
     },
   },
 
+  hoverbuttons: {
+    label: "Hoverbuttons",
+    description: "Remote control thehoverbuttons",
+    functions: {
+      leftButton: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "LeftHoverButton",
+        generateTransaction: true,
+        label: "Left Button",
+        description: "Trigger Left Hover Button",
+      },
+      rightButton: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "RightHoverButton",
+        generateTransaction: true,
+        label: "Right Button",
+        description: "Trigger Right Hover Button",
+      },
+    },
+  },
+
   // Example of another group:
   avatarcontrols: {
     label: "Avatar",
