@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
   const body = await readBody(event)
   
   try {
-    const response = await $fetch('http://localhost:30010/remote/object/call', {
+    const response = await $fetch('http://192.168.0.97:30010/remote/object/call', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

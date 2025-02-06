@@ -5,7 +5,7 @@ export default defineEventHandler(async () => {
     // Log the attempt
     console.log('Checking UE5 server health...')
     
-    const response = await $fetch('http://localhost:30010/remote/info', {
+    const response = await $fetch('http://192.168.0.97:30010/remote/info', {
       method: 'GET',
       headers: {
         'Accept': 'application/json'
