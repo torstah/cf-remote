@@ -137,4 +137,21 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
       },
     },
   },
+  settings: {
+    label: "Settings",
+    description: "Game settings and configuration",
+    functions: {
+      setResolution: {
+        objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "SetResolution",
+        generateTransaction: true,
+        label: "Set Resolution",
+        description: "Change the game resolution",
+        parameters: {
+          x: 1920,
+          y: 1080
+        }
+      }
+    }
+  }
 };

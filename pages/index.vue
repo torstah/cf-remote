@@ -39,7 +39,7 @@
                 class="border-b border-gray-700 last:border-b-0 pb-4 last:pb-0"
               >
                 <button
-                  @click="() => callFunction(func)"
+                  @click="() => handleFunctionCall(func)"
                   class="bg-gray-600 hover:bg-gray-700 text-gray-100 font-bold py-2 px-4 rounded w-full transition-colors duration-200 mb-2"
                 >
                   {{ func.label }}
@@ -53,6 +53,10 @@
           <h2 class="text-xl font-semibold mb-2 text-gray-200">Last Response:</h2>
           <pre class="bg-gray-700 p-4 rounded text-gray-300 overflow-x-auto">{{ JSON.stringify(result, null, 2) }}</pre>
         </div>
+
+        <div class="mt-8">
+          <ResolutionSettings />
+        </div>
       </div>
     </div>
   </NuxtLayout>
@@ -60,40 +64,16 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { gameFunctionGroups, type GameFunction } from '~/config/gameFunctions';
+import type { GameFunction } from '~/config/gameFunctions';
 
 const result = ref(null);
 const toast = useToast()
 const { status, info } = useConnectionStatus()
+const { gameFunctionGroups, callFunction } = useGameFunctions()
 
-const callFunction = async (functionConfig: GameFunction) => {
-//   if (status.value !== 'connected') {
-//     toast.add({
-//       title: 'Error',
-//       description: 'Not connected to UE5 server',
-//       icon: 'i-heroicons-exclamation-circle',
-//       color: 'red',
-//       timeout: 1000
-//     })
-//     return
-//   }
-
+const handleFunctionCall = async (functionConfig: GameFunction) => {
   try {
-    const { data, error } = await useFetch('/api/game', {
-      method: 'POST',
-      body: {
-        objectPath: functionConfig.objectPath,
-        functionName: functionConfig.functionName,
-        generateTransaction: functionConfig.generateTransaction,
-        parameters: functionConfig.parameters
-      }
-    })
-
-    if (error.value) {
-      throw error.value
-    }
-
-    result.value = data.value
+    result.value = await callFunction(functionConfig)
   } catch (e) {
     const errorMessage = e instanceof Error ? e.message : 'An error occurred';
     toast.add({
@@ -104,5 +84,5 @@ const callFunction = async (functionConfig: GameFunction) => {
       timeout: 1000
     })
   }
-};
+}
 </script> 
