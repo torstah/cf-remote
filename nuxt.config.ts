@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     baseURL: '/'
   },
   nitro: {
-    preset: 'windows-exe'
+    preset: 'node-server'
   },
   devServer: {
     host: '0.0.0.0'
