@@ -23,8 +23,7 @@ export default defineEventHandler(async (event) => {
       }
     })
     
-    // Log the successful response
-    console.log('UE5 server response:', response)
+    
 
     // Any response means we're connected
     return {
