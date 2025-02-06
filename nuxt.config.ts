@@ -6,7 +6,13 @@ export default defineNuxtConfig({
     '@nuxt/ui'
   ],
   ui: {
-    global: true
+    global: false,
+    icons: false,
+    notifications: {
+      // Only include notifications/toast functionality
+      position: 'top-right',
+      duration: 2000
+    }
   },
   colorMode: {
     preference: 'dark'

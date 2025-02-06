@@ -18,71 +18,79 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
     label: "Main",
     description: "Scenes and main functions",
     functions: {
-        start: {
-            objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
-            functionName: "Start",
-            generateTransaction: true,
-            label: "Start",
-            description: "Back to start"
-          },
-          nexus: {
-            objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
-            functionName: "Nexus",
-            generateTransaction: true,
-            label: "Nexus",
-            description: "To the menu"
-          },
-          healthcare: {
-            objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
-            functionName: "Healthcare",
-            generateTransaction: true,
-            label: "Healthcare",
-            description: "To the healthcare scene"
-          },
-          citizen: {
-            objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
-            functionName: "Citizen",
-            generateTransaction: true,
-            label: "Citizen",
-            description: "To the citizen scene"
-          },
-          farm: {   
-            objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
-            functionName: "Farm",
-            generateTransaction: true,
-            label: "Farm",
-            description: "To the farm scene"
-          },
+      start: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "Start",
+        generateTransaction: true,
+        label: "Start",
+        description: "Back to start",
+      },
+      nexus: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "Nexus",
+        generateTransaction: true,
+        label: "Nexus",
+        description: "To the menu",
+      },
+      healthcare: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "Healthcare",
+        generateTransaction: true,
+        label: "Healthcare",
+        description: "To the healthcare scene",
+      },
+      citizen: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "Citizen",
+        generateTransaction: true,
+        label: "Citizen",
+        description: "To the citizen scene",
+      },
+      farm: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "Farm",
+        generateTransaction: true,
+        label: "Farm",
+        description: "To the farm scene",
+      },
       factory: {
-        objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
         functionName: "Factory",
         generateTransaction: true,
-        label: "Call Factory",
-        description: "Triggers the factory function in the game"
-      }
-    }
+        label: "Factory",
+        description: "To the factory scene",
+      },
+    },
   },
-  
+
   // Example of another group:
   avatarcontrols: {
     label: "Avatar",
     description: "Control the avatar",
     functions: {
       spawnEnemy: {
-        objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
         functionName: "ShowAvatar",
         generateTransaction: true,
         label: "Show Avatar",
-        description: "Shows the avatar"
+        description: "Shows the avatar",
       },
       hideAvatar: {
-        objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
         functionName: "HideAvatar",
         generateTransaction: true,
         label: "Hide Avatar",
-        description: "Hides the avatar"
-      }
-    }
+        description: "Hides the avatar",
+      },
+    },
   },
 
   audioControls: {
@@ -90,39 +98,43 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
     description: "Control the audio",
     functions: {
       spawnEnemy: {
-        objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
         functionName: "MuteSpeakers",
         generateTransaction: true,
         label: "Mute Speakers",
-        description: "Mutes the speakers"
+        description: "Mutes the speakers",
       },
       unmuteSpeakers: {
-        objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
         functionName: "UnmuteSpeakers",
         generateTransaction: true,
         label: "Unmute Speakers",
-        description: "Unmutes the speakers"
-      }
-    }
+        description: "Unmutes the speakers",
+      },
+    },
   },
   debug: {
     label: "Debug",
     description: "Debugging purposes",
     functions: {
       spawnEnemy: {
-        objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
         functionName: "ShowAvatar",
         generateTransaction: true,
         label: "Show Avatar",
-        description: "Shows the avatar"
+        description: "Shows the avatar",
       },
       hideAvatar: {
-        objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
         functionName: "HideAvatar",
         generateTransaction: true,
         label: "Hide Avatar",
-        description: "Hides the avatar"
-      }
-    }
-  }
-}; 
+        description: "Hides the avatar",
+      },
+    },
+  },
+};
