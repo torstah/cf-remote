@@ -18,19 +18,19 @@ export const useConnectionStatus = () => {
     console.log('Checking connection...')
 
     try {
-      const { data } = await useFetch<HealthResponse>('/api/health', {
-        // Prevent caching
-        key: Date.now().toString(),
-        // Timeout after 5 seconds
-        timeout: 5000
+      const response = await $fetch<HealthResponse>('/api/health', {
+        headers: {
+          'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache'
+        }
       })
 
-      console.log('Health check response:', data.value)
+      console.log('Health check response:', response)
 
-      if (data.value) {
-        status.value = data.value.status
-        info.value = data.value.info
-        lastCheck.value = data.value.timestamp || new Date().toISOString()
+      if (response) {
+        status.value = response.status
+        info.value = response.info
+        lastCheck.value = response.timestamp || new Date().toISOString()
       } else {
         status.value = 'disconnected'
         console.warn('No data received from health check')
@@ -43,8 +43,10 @@ export const useConnectionStatus = () => {
 
   const startPolling = () => {
     console.log('Starting connection polling...')
+    // Clear any existing interval
+    stopPolling()
+    // Check immediately
     checkConnection()
-    
     // Then check every 5 seconds
     pollInterval = setInterval(checkConnection, 5000)
   }

@@ -1,6 +1,13 @@
-import { defineEventHandler } from 'h3'
+import { defineEventHandler, setHeaders } from 'h3'
 
-export default defineEventHandler(async () => {
+export default defineEventHandler(async (event) => {
+  // Set no-cache headers
+  setHeaders(event, {
+    'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+    'Pragma': 'no-cache',
+    'Expires': '0'
+  })
+
   try {
     // Log the attempt
     console.log('Checking UE5 server health...')
@@ -8,7 +15,9 @@ export default defineEventHandler(async () => {
     const response = await $fetch('http://192.168.0.97:30010/remote/info', {
       method: 'GET',
       headers: {
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache'
       }
     })
     
