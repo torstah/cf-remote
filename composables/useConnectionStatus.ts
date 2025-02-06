@@ -4,14 +4,19 @@ interface HealthResponse {
   status: 'connected' | 'disconnected'
   info?: any
   error?: string
+  timestamp?: string
 }
 
 export const useConnectionStatus = () => {
   const status = ref<'checking' | 'connected' | 'disconnected'>('checking')
   const info = ref<any>(null)
+  const lastCheck = ref<string>('')
   let pollInterval: NodeJS.Timer | null = null
 
   const checkConnection = async () => {
+    status.value = 'checking'
+    console.log('Checking connection...')
+
     try {
       const { data } = await useFetch<HealthResponse>('/api/health', {
         // Prevent caching
@@ -20,11 +25,15 @@ export const useConnectionStatus = () => {
         timeout: 5000
       })
 
+      console.log('Health check response:', data.value)
+
       if (data.value) {
         status.value = data.value.status
         info.value = data.value.info
+        lastCheck.value = data.value.timestamp || new Date().toISOString()
       } else {
         status.value = 'disconnected'
+        console.warn('No data received from health check')
       }
     } catch (e) {
       status.value = 'disconnected'
@@ -33,7 +42,7 @@ export const useConnectionStatus = () => {
   }
 
   const startPolling = () => {
-    // Check immediately
+    console.log('Starting connection polling...')
     checkConnection()
     
     // Then check every 5 seconds
@@ -44,6 +53,7 @@ export const useConnectionStatus = () => {
     if (pollInterval) {
       clearInterval(pollInterval)
       pollInterval = null
+      console.log('Stopped connection polling')
     }
   }
 
@@ -58,6 +68,7 @@ export const useConnectionStatus = () => {
   return {
     status,
     info,
+    lastCheck,
     checkConnection,
     startPolling,
     stopPolling
