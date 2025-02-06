@@ -15,8 +15,8 @@ export interface FunctionGroup {
 
 export const gameFunctionGroups: Record<string, FunctionGroup> = {
   production: {
-    label: "Production Controls",
-    description: "Control factory and production systems",
+    label: "Main",
+    description: "Scenes and main functions",
     functions: {
         start: {
             objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
@@ -62,17 +62,66 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
       }
     }
   },
+  
   // Example of another group:
-  combat: {
-    label: "Combat System",
-    description: "Control enemies and combat scenarios",
+  avatarcontrols: {
+    label: "Avatar",
+    description: "Control the avatar",
     functions: {
       spawnEnemy: {
         objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
-        functionName: "SpawnEnemy",
+        functionName: "ShowAvatar",
         generateTransaction: true,
-        label: "Spawn Enemy",
-        description: "Spawns a new enemy in the game"
+        label: "Show Avatar",
+        description: "Shows the avatar"
+      },
+      hideAvatar: {
+        objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "HideAvatar",
+        generateTransaction: true,
+        label: "Hide Avatar",
+        description: "Hides the avatar"
+      }
+    }
+  },
+
+  audioControls: {
+    label: "Audio",
+    description: "Control the audio",
+    functions: {
+      spawnEnemy: {
+        objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "MuteSpeakers",
+        generateTransaction: true,
+        label: "Mute Speakers",
+        description: "Mutes the speakers"
+      },
+      unmuteSpeakers: {
+        objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "UnmuteSpeakers",
+        generateTransaction: true,
+        label: "Unmute Speakers",
+        description: "Unmutes the speakers"
+      }
+    }
+  },
+  debug: {
+    label: "Debug",
+    description: "Debugging purposes",
+    functions: {
+      spawnEnemy: {
+        objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "ShowAvatar",
+        generateTransaction: true,
+        label: "Show Avatar",
+        description: "Shows the avatar"
+      },
+      hideAvatar: {
+        objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "HideAvatar",
+        generateTransaction: true,
+        label: "Hide Avatar",
+        description: "Hides the avatar"
       }
     }
   }
