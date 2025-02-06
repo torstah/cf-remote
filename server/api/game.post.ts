@@ -9,10 +9,11 @@ interface GameFunctionCall {
 }
 
 export default defineEventHandler(async (event) => {
+  const config = useRuntimeConfig()
   const body = await readBody(event)
   
   try {
-    const response = await $fetch('http://192.168.0.97:30010/remote/object/call', {
+    const response = await $fetch(`${config.ueServer}/remote/object/call`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

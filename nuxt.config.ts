@@ -32,5 +32,11 @@ export default defineNuxtConfig({
   },
   devServer: {
     host: '0.0.0.0'
+  },
+  runtimeConfig: {
+    ueServer: process.env.NUXT_UE_SERVER || 'http://localhost:30010',
+    public: {
+      // Public runtime config goes here
+    }
   }
 })
