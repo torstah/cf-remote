@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-4">
+  <div class="space-y-4 p-4">
     <h2 class="text-xl font-semibold">Resolution Settings</h2>
     
     <div v-if="currentResolution" class="text-sm text-gray-400 mb-4">
