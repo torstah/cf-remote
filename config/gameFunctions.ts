@@ -22,6 +22,14 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
     label: "Main",
     description: "Scenes and main functions",
     functions: {
+      idle: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "Idle",
+        generateTransaction: true,
+        label: "Idle",
+        description: "Idle",
+      },
       start: {
         objectPath:
           "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
