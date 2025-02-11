@@ -192,30 +192,31 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
     description: "Game settings and configuration",
     functions: {
       setResolution: {
-        objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
         functionName: "SetResolution",
         generateTransaction: true,
         label: "Set Resolution",
         description: "Change the game resolution",
         requiresInput: true,
-        component: 'ResolutionSettings'
+        component: "ResolutionSettings",
       },
       setWindowed: {
-        objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
         functionName: "SetWindowed",
         generateTransaction: true,
         label: "Set Windowed",
         description: "Change the game to windowed mode",
-       
-      
       },
       setFullscreen: {
-        objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
         functionName: "SetFullscreen",
         generateTransaction: true,
         label: "Set Fullscreen",
         description: "Change the game to fullscreen mode",
       },
-    }
-  }
+    },
+  },
 };
