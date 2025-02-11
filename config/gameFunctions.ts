@@ -78,6 +78,21 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         label: "Factory",
         description: "To the factory scene",
       },
+      showTechStack: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "ShowTechStack",
+        generateTransaction: true,
+        label: "Show Tech Stack",
+        description: "Show the tech stack",
+      },
+      hideTechStack: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "HideTechStack",
+        generateTransaction: true,
+        label: "Hide Tech Stack",
+      },
     },
   },
 
