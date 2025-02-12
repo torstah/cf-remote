@@ -1,6 +1,6 @@
 <template>
-  <NuxtLayout name="default">
-    <div class="min-h-screen bg-gray-900 dark:bg-gray-900 text-gray-100 p-4">
+ 
+    <div class="min-h-screen bg-black text-gray-100 p-4">
       <div class="container mx-auto">
         <div class="flex justify-between items-center mb-6">
           <h1 class="text-2xl font-bold text-gray-100">CF Remote</h1>
@@ -19,11 +19,11 @@
           </div>
         </div>
         
-        <div class="space-y-8">
+        <div class="space-y-4">
           <div 
             v-for="(group, groupKey) in gameFunctionGroups" 
             :key="groupKey"
-            class="border border-gray-700 rounded-lg p-4 bg-gray-800"
+            class="border border-gray-700 p-4 bg-gray-900"
           >
             <div class="mb-4">
               <h2 class="text-xl font-bold text-gray-100">{{ group.label }}</h2>
@@ -32,17 +32,23 @@
               </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div :class="{
+              'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4': !group.layout || group.layout === 'grid',
+              'flex flex-wrap gap-4': group.layout === 'sideBySide'
+            }">
               <div 
                 v-for="(func, key) in group.functions" 
                 :key="key"
-                class="border-b border-gray-700 last:border-b-0 pb-4 last:pb-0"
+                :class="{
+                  'pb-4': !group.layout || group.layout === 'grid',
+                  'flex-1': group.layout === 'sideBySide'
+                }"
               >
                 <UButton
                   @click="() => handleFunction(func)"
                   :color="func.color || 'gray'"
                   block
-                  class="mb-2"
+                  class=" !rounded-none"
                 >
                   {{ func.label }}
                 </UButton>
@@ -68,7 +74,7 @@
         </div>
       </div>
     </div>
-  </NuxtLayout>
+ 
 </template>
 
 <script setup lang="ts">

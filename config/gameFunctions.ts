@@ -1,4 +1,4 @@
-import { ButtonColorType } from './colors'
+import type { ButtonColorType } from './colors'
 
 export interface GameFunction {
   objectPath: string;
@@ -18,6 +18,7 @@ export interface FunctionGroup {
   label: string;
   description?: string;
   functions: Record<string, GameFunction>;
+  layout?: 'grid' | 'sideBySide';
 }
 
 export const gameFunctionGroups: Record<string, FunctionGroup> = {
@@ -51,6 +52,23 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         label: "Start",
         description: "Back to start",
         color: 'green',
+      },
+      showTechStack: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "ShowTechStack",
+        generateTransaction: true,
+        label: "Show Tech Stack",
+        description: "Show the tech stack",
+        color: 'orange',
+      },
+      hideTechStack: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "HideTechStack",
+        generateTransaction: true,
+        label: "Hide Tech Stack",
+        color: 'orange',
       },
       nexus: {
         objectPath:
@@ -94,27 +112,14 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         label: "Factory",
         description: "To the factory scene",
       },
-      showTechStack: {
-        objectPath:
-          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
-        functionName: "ShowTechStack",
-        generateTransaction: true,
-        label: "Show Tech Stack",
-        description: "Show the tech stack",
-      },
-      hideTechStack: {
-        objectPath:
-          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
-        functionName: "HideTechStack",
-        generateTransaction: true,
-        label: "Hide Tech Stack",
-      },
+     
     },
   },
 
   hoverbuttons: {
     label: "Hoverbuttons",
-    description: "Remote control thehoverbuttons",
+    description: "Remote control the hoverbuttons",
+    layout: 'sideBySide',
     functions: {
       leftButton: {
         objectPath:
@@ -123,6 +128,7 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         generateTransaction: true,
         label: "Left Button",
         description: "Trigger Left Hover Button",
+        color: 'blue'
       },
       rightButton: {
         objectPath:
@@ -131,6 +137,7 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         generateTransaction: true,
         label: "Right Button",
         description: "Trigger Right Hover Button",
+        color: 'green'
       },
     },
   },
@@ -206,6 +213,7 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
   settings: {
     label: "Settings",
     description: "Game settings and configuration",
+    layout: 'sideBySide',
     functions: {
       setResolution: {
         objectPath:
