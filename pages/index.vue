@@ -3,7 +3,7 @@
     <div class="min-h-screen bg-gray-900 dark:bg-gray-900 text-gray-100 p-4">
       <div class="container mx-auto">
         <div class="flex justify-between items-center mb-6">
-          <h1 class="text-2xl font-bold text-gray-100">Connected Futures Controller</h1>
+          <h1 class="text-2xl font-bold text-gray-100">CF Remote</h1>
           <div class="flex items-center gap-2">
             <div 
               class="w-3 h-3 rounded-full"
@@ -38,12 +38,14 @@
                 :key="key"
                 class="border-b border-gray-700 last:border-b-0 pb-4 last:pb-0"
               >
-                <button
+                <UButton
                   @click="() => handleFunction(func)"
-                  class="bg-gray-600 hover:bg-gray-700 text-gray-100 font-bold py-2 px-4 rounded w-full transition-colors duration-200 mb-2"
+                  :color="func.color || 'gray'"
+                  block
+                  class="mb-2"
                 >
                   {{ func.label }}
-                </button>
+                </UButton>
               </div>
             </div>
           </div>
@@ -72,6 +74,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import type { GameFunction } from '~/config/gameFunctions';
+import { buttonColors } from '~/config/colors'
 
 const result = ref(null);
 const toast = useToast()

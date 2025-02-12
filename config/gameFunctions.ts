@@ -1,3 +1,5 @@
+import { ButtonColorType } from './colors'
+
 export interface GameFunction {
   objectPath: string;
   functionName: string;
@@ -9,6 +11,7 @@ export interface GameFunction {
   key?: string;
   requiresInput?: boolean;
   component?: string;
+  color?: 'white' | 'gray' | 'black' | 'red' | 'orange' | 'yellow' | 'green' | 'blue' | 'indigo' | 'purple' | 'pink';
 }
 
 export interface FunctionGroup {
@@ -29,6 +32,7 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         generateTransaction: true,
         label: "Idle",
         description: "Idle",
+        color: 'blue',
       },
       testSound: {
         objectPath:
@@ -37,6 +41,7 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         generateTransaction: true,
         label: "Test Sound",
         description: "Test the sound",
+        color: 'yellow',
       },
       start: {
         objectPath:
@@ -45,6 +50,7 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         generateTransaction: true,
         label: "Start",
         description: "Back to start",
+        color: 'green',
       },
       nexus: {
         objectPath:
@@ -53,6 +59,7 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         generateTransaction: true,
         label: "Nexus",
         description: "To the menu",
+        
       },
       healthcare: {
         objectPath:
@@ -61,6 +68,7 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         generateTransaction: true,
         label: "Healthcare",
         description: "To the healthcare scene",
+     
       },
       citizen: {
         objectPath:
@@ -208,6 +216,7 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         description: "Change the game resolution",
         requiresInput: true,
         component: "ResolutionSettings",
+        color: 'blue',
       },
       setWindowed: {
         objectPath:
@@ -216,6 +225,7 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         generateTransaction: true,
         label: "Set Windowed",
         description: "Change the game to windowed mode",
+        color: 'purple',
       },
       setFullscreen: {
         objectPath:
@@ -224,6 +234,7 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         generateTransaction: true,
         label: "Set Fullscreen",
         description: "Change the game to fullscreen mode",
+        color: 'green',
       },
     },
   },

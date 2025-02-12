@@ -33,11 +33,11 @@ export default defineEventHandler(async (event) => {
     }
   } catch (error) {
     // Log the error details
-    console.error('Health check failed:', {
-      error,
-      message: error instanceof Error ? error.message : 'Unknown error',
-      timestamp: new Date().toISOString()
-    })
+    // console.error('Health check failed:', {
+    //   error,
+    //   message: error instanceof Error ? error.message : 'Unknown error',
+    //   timestamp: new Date().toISOString()
+    // })
 
     return {
       status: 'disconnected',

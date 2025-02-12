@@ -25,7 +25,7 @@ export const useConnectionStatus = () => {
         }
       })
 
-      console.log('Health check response:', response)
+     // console.log('Health check response:', response)
 
       if (response) {
         status.value = response.status
@@ -33,11 +33,11 @@ export const useConnectionStatus = () => {
         lastCheck.value = response.timestamp || new Date().toISOString()
       } else {
         status.value = 'disconnected'
-        console.warn('No data received from health check')
+       // console.warn('No data received from health check')
       }
     } catch (e) {
       status.value = 'disconnected'
-      console.error('Connection check failed:', e)
+     // console.error('Connection check failed:', e)
     }
   }
 
