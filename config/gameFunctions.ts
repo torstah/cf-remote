@@ -30,6 +30,14 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         label: "Idle",
         description: "Idle",
       },
+      testSound: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "TestSound",
+        generateTransaction: true,
+        label: "Test Sound",
+        description: "Test the sound",
+      },
       start: {
         objectPath:
           "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
