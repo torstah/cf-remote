@@ -254,4 +254,22 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
       },
     },
   },
+  danger: {
+    label: "App",
+    description: "App functions",
+    layout: 'grid',
+    functions: {
+      quitGame: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "QuitGame",
+        generateTransaction: true,
+        label: "Quit Game",
+        description: "Quit the game",
+        
+        color: 'red',
+      },
+      
+    },
+  },
 };
