@@ -11,6 +11,8 @@ export interface GameFunction {
   key?: string;
   requiresInput?: boolean;
   component?: string;
+  requiresConfirm?: boolean;
+  confirmMessage?: string;
   color?: 'white' | 'gray' | 'black' | 'red' | 'orange' | 'yellow' | 'green' | 'blue' | 'indigo' | 'purple' | 'pink';
 }
 
@@ -266,8 +268,9 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         generateTransaction: true,
         label: "Quit Game",
         description: "Quit the game",
-        
         color: 'red',
+        requiresConfirm: true,
+        confirmMessage: "Are you sure you want to quit the game?"
       },
       
     },

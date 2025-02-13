@@ -75,6 +75,29 @@
               }" 
             />
           </UModal>
+
+          <!-- Confirmation Modal -->
+          <UModal v-model="showConfirmModal">
+            <div class="p-4">
+              <h3 class="text-lg font-semibold mb-4">Confirm Action</h3>
+              <p class="mb-6">{{ pendingFunction?.confirmMessage }}</p>
+              <div class="flex justify-end gap-4">
+                <UButton
+                  color="gray"
+                  variant="outline"
+                  @click="showConfirmModal = false"
+                >
+                  Cancel
+                </UButton>
+                <UButton
+                  color="red"
+                  @click="handleConfirmed"
+                >
+                  Confirm
+                </UButton>
+              </div>
+            </div>
+          </UModal>
         </div>
       </div>
     </div>
@@ -92,7 +115,9 @@ const { status, info } = useConnectionStatus()
 const { gameFunctionGroups, callFunction } = useGameFunctions()
 
 const showResolutionModal = ref(false)
+const showConfirmModal = ref(false)
 const selectedFunction = ref<GameFunction | null>(null)
+const pendingFunction = ref<GameFunction | null>(null)
 const recentlyClicked = ref<Record<string, boolean>>({})
 
 const handleFunction = async (func: GameFunction) => {
@@ -111,6 +136,12 @@ const handleFunction = async (func: GameFunction) => {
   }, 200)
 
   try {
+    if (func.requiresConfirm) {
+      pendingFunction.value = func
+      showConfirmModal.value = true
+      return
+    }
+
     if (func.requiresInput) {
       selectedFunction.value = func
       showResolutionModal.value = true
@@ -147,6 +178,31 @@ const handleFunctionCall = async (functionConfig: GameFunction) => {
       color: 'red',
       timeout: 1000
     })
+  }
+}
+
+const handleConfirmed = async () => {
+  if (!pendingFunction.value) return
+  
+  try {
+    const response = await callFunction(pendingFunction.value)
+    result.value = response
+    
+    toast.add({
+      title: 'Success',
+      description: `${pendingFunction.value.label} executed successfully`,
+      color: 'green'
+    })
+  } catch (error) {
+    console.error('Function call error:', error)
+    toast.add({
+      title: 'Error',
+      description: error instanceof Error ? error.message : 'Failed to execute function',
+      color: 'red'
+    })
+  } finally {
+    pendingFunction.value = null
+    showConfirmModal.value = false
   }
 }
 </script> 
