@@ -22,3 +22,7 @@ logs
 .env
 .env.*
 !.env.example
+
+# Local config files
+config.bat
+config.local.bat

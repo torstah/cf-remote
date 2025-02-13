@@ -8,7 +8,7 @@ A remote control interface for Connected Futures built with Nuxt.
 2. Run `install.bat` as administrator - this will:
     - Install dependencies
     - Add required hosts file entry
-    - Create a default `config.bat`
+    - Create your local `config.bat` from config.example.bat
 
 3. Edit `config.bat` with your settings:
     ```batch
@@ -21,6 +21,8 @@ A remote control interface for Connected Futures built with Nuxt.
     :: Set web interface port
     set WEB_PORT=3000
     ```
+
+> Note: config.bat is not tracked in git - each machine should have its own local configuration
 
 ## Running the Application
 
