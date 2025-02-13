@@ -1,6 +1,9 @@
 @echo off
 echo Starting Connected Futures
 
+:: Load config
+call config.bat
+
 :: Start the game with required parameters
-start "" "C:\Users\Plan8-PC\Desktop\ProdBuild\Windows\CF_2025.exe" -RCWebControlEnable -RCWebInterfaceEnable
+start "" "%GAME_PATH%" -RCWebControlEnable -RCWebInterfaceEnable
 
