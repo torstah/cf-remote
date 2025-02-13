@@ -47,8 +47,12 @@
                 <UButton
                   @click="() => handleFunction(func)"
                   :color="func.color || 'gray'"
+                  variant="solid"
+                  :class="[
+                    '!rounded-none transition-opacity duration-200',
+                    recentlyClicked[func.functionName] ? 'opacity-50' : 'opacity-100'
+                  ]"
                   block
-                  class=" !rounded-none"
                 >
                   {{ func.label }}
                 </UButton>
@@ -89,13 +93,45 @@ const { gameFunctionGroups, callFunction } = useGameFunctions()
 
 const showResolutionModal = ref(false)
 const selectedFunction = ref<GameFunction | null>(null)
+const recentlyClicked = ref<Record<string, boolean>>({})
 
-const handleFunction = (func: GameFunction) => {
-  if (func.requiresInput) {
-    selectedFunction.value = func
-    showResolutionModal.value = true
-  } else {
-    handleFunctionCall(func)
+const handleFunction = async (func: GameFunction) => {
+  // Set clicked state and schedule reset immediately
+  recentlyClicked.value = {
+    ...recentlyClicked.value,
+    [func.functionName]: true
+  }
+  
+  // Always reset opacity after short delay, regardless of API response
+  setTimeout(() => {
+    recentlyClicked.value = {
+      ...recentlyClicked.value,
+      [func.functionName]: false
+    }
+  }, 200)
+
+  try {
+    if (func.requiresInput) {
+      selectedFunction.value = func
+      showResolutionModal.value = true
+      return
+    }
+
+    const response = await callFunction(func)
+    result.value = response
+    
+    toast.add({
+      title: 'Success',
+      description: `${func.label} executed successfully`,
+      color: 'green'
+    })
+  } catch (error) {
+    console.error('Function call error:', error)
+    toast.add({
+      title: 'Error',
+      description: error instanceof Error ? error.message : 'Failed to execute function',
+      color: 'red'
+    })
   }
 }
 
