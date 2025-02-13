@@ -163,6 +163,14 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         label: "Hide Avatar",
         description: "Hides the avatar",
       },
+      nextStep: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "NextStep",
+        generateTransaction: true,
+        label: "Next Step",
+        description: "Go to the next step",
+      },
     },
   },
 
