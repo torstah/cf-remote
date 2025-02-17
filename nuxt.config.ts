@@ -22,7 +22,16 @@ export default defineNuxtConfig({
       title: 'UE5 Game Controller',
       meta: [
         { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+        { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' }
+      ],
+      style: [
+        {
+          children: `
+            html {
+              touch-action: manipulation;
+            }
+          `
+        }
       ]
     },
     baseURL: '/'

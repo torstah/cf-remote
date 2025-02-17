@@ -180,7 +180,7 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
     label: "Audio",
     description: "Control the audio",
     functions: {
-      spawnEnemy: {
+      muteSpeakers: {
         objectPath:
           "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
         functionName: "MuteSpeakers",
@@ -198,28 +198,7 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
       },
     },
   },
-  // debug: {
-  //   label: "Debug",
-  //   description: "Debugging purposes",
-  //   functions: {
-  //     spawnEnemy: {
-  //       objectPath:
-  //         "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
-  //       functionName: "ShowAvatar",
-  //       generateTransaction: true,
-  //       label: "Show Avatar",
-  //       description: "Shows the avatar",
-  //     },
-  //     hideAvatar: {
-  //       objectPath:
-  //         "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
-  //       functionName: "HideAvatar",
-  //       generateTransaction: true,
-  //       label: "Hide Avatar",
-  //       description: "Hides the avatar",
-  //     },
-  //   },
-  // },
+ 
   settings: {
     label: "Settings",
     description: "Game settings and configuration",
@@ -276,3 +255,4 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
     },
   },
 };
+
