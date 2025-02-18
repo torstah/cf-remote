@@ -202,7 +202,7 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
   settings: {
     label: "Settings",
     description: "Game settings and configuration",
-    layout: 'sideBySide',
+    
     functions: {
       setResolution: {
         objectPath:
@@ -231,6 +231,24 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         generateTransaction: true,
         label: "Set Fullscreen",
         description: "Change the game to fullscreen mode",
+        color: 'green',
+      },
+      setSitting: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "SetSitting",
+        generateTransaction: true,
+        label: "Set Sitting",
+        description: "Change the game to sitting mode",
+        color: 'green',
+      },
+      setStanding: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "SetStanding",
+        generateTransaction: true,
+        label: "Set Standing",
+        description: "Change the game to standing mode",
         color: 'green',
       },
     },
