@@ -13,7 +13,7 @@ if not exist "%GAME_PATH%" (
 )
 
 :: Start the game with required parameters
-start "" "%GAME_PATH%" -RCWebControlEnable -RCWebInterfaceEnable
+start /min "" "%GAME_PATH%" -RCWebControlEnable -RCWebInterfaceEnable %GAME_WINDOW_POS%
 
 :: Brief wait for game to start initializing
 timeout /t 3 /nobreak

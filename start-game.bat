@@ -5,5 +5,5 @@ echo Starting Connected Futures
 call config.bat
 
 :: Start the game with required parameters
-start "" "%GAME_PATH%" -RCWebControlEnable -RCWebInterfaceEnable
+start /min "" "%GAME_PATH%" -RCWebControlEnable -RCWebInterfaceEnable %GAME_WINDOW_POS%
 
