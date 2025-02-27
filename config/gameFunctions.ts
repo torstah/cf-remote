@@ -187,6 +187,20 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         generateTransaction: true,
         label: "Set No Avatar Disabled",
       },
+      enableParallax: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "EnableParallax",
+        generateTransaction: true,
+        label: "Enable Parallax",
+      },
+      disableParallax: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "DisableParallax",
+        generateTransaction: true,
+        label: "Disable Parallax",
+      },
     },
   },
 
