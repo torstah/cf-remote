@@ -279,6 +279,20 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         description: "Change the game to standing mode",
         color: 'green',
       },
+      showSettingsScreen: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "ShowSettingsScreen",
+        generateTransaction: true,
+        label: "Show Settings Screen",
+      },
+      hideSettingsScreen: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "HideSettingsScreen",
+        generateTransaction: true,
+        label: "Hide Settings Screen",
+      },
     },
   },
   danger: {
