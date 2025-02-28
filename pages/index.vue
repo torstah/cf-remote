@@ -127,7 +127,7 @@ const handleFunction = async (func: GameFunction) => {
     [func.functionName]: true
   }
   
-  // Always reset opacity after short delay, regardless of API response
+  // Always reset opacity after short delay
   setTimeout(() => {
     recentlyClicked.value = {
       ...recentlyClicked.value,
@@ -150,12 +150,6 @@ const handleFunction = async (func: GameFunction) => {
 
     const response = await callFunction(func)
     result.value = response
-    
-    toast.add({
-      title: 'Success',
-      description: `${func.label} executed successfully`,
-      color: 'green'
-    })
   } catch (error) {
     console.error('Function call error:', error)
     toast.add({
@@ -187,12 +181,6 @@ const handleConfirmed = async () => {
   try {
     const response = await callFunction(pendingFunction.value)
     result.value = response
-    
-    toast.add({
-      title: 'Success',
-      description: `${pendingFunction.value.label} executed successfully`,
-      color: 'green'
-    })
   } catch (error) {
     console.error('Function call error:', error)
     toast.add({
