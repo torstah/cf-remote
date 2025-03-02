@@ -13,7 +13,7 @@ if not exist "%GAME_PATH%" (
 )
 
 :: Start the game with required parameters
-start /min "" "%GAME_PATH%" -RCWebControlEnable -RCWebInterfaceEnable %GAME_WINDOW_POS%
+start /min "" "%GAME_PATH%" -RCWebControlEnable -RCWebInterfaceEnable "%GAME_WINDOW_POS%"
 
 :: Brief wait for game to start initializing
 timeout /t 3 /nobreak
@@ -23,4 +23,4 @@ set PORT=%WEB_PORT%
 set NUXT_UE_SERVER=%UE_SERVER_URL%
 start /min cmd /c "node .output/server/index.mjs > nul 2>&1 & echo %ERRORLEVEL% > server.pid"
 timeout /t 2 /nobreak
-start http://cf-controller.local:%WEB_PORT% 
+start http://localhost:%WEB_PORT% 
