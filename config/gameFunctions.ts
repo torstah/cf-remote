@@ -130,7 +130,8 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         generateTransaction: true,
         label: "Left Button",
         description: "Trigger Left Hover Button",
-        color: 'blue'
+        color: 'blue',
+        group: 'row1'
       },
       rightButton: {
         objectPath:
@@ -139,7 +140,40 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         generateTransaction: true,
         label: "Right Button",
         description: "Trigger Right Hover Button",
-        color: 'green'
+        color: 'green',
+        group: 'row1'
+      },
+      nextStep: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "NextStep",
+        generateTransaction: true,
+        label: "Next Step",
+        description: "Go to the next step",
+        color: 'yellow',
+        group: 'row2'
+      }
+    },
+  },
+  audioControls: {
+    label: "Audio",
+    description: "Control the audio",
+    functions: {
+      muteSpeakers: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "MuteSpeakers",
+        generateTransaction: true,
+        label: "VO in neck speakers",
+        description: "Mutes the speakers",
+      },
+      unmuteSpeakers: {
+        objectPath:
+          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "UnmuteSpeakers",
+        generateTransaction: true,
+        label: "VO in front Speakers",
+        description: "Unmutes the speakers",
       },
     },
   },
@@ -204,28 +238,7 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
     },
   },
 
-  audioControls: {
-    label: "Audio",
-    description: "Control the audio",
-    functions: {
-      muteSpeakers: {
-        objectPath:
-          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
-        functionName: "MuteSpeakers",
-        generateTransaction: true,
-        label: "Mute Speakers",
-        description: "Mutes the speakers",
-      },
-      unmuteSpeakers: {
-        objectPath:
-          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
-        functionName: "UnmuteSpeakers",
-        generateTransaction: true,
-        label: "Unmute Speakers",
-        description: "Unmutes the speakers",
-      },
-    },
-  },
+ 
  
   settings: {
     label: "Settings",

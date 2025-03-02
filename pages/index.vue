@@ -34,29 +34,73 @@
 
             <div :class="{
               'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4': !group.layout || group.layout === 'grid',
-              'flex flex-wrap gap-4': group.layout === 'sideBySide'
+              'flex flex-col': group.layout === 'sideBySide'
             }">
-              <div 
-                v-for="(func, key) in group.functions" 
-                :key="key"
-                :class="{
-                  'pb-4': !group.layout || group.layout === 'grid',
-                  'flex-1': group.layout === 'sideBySide'
-                }"
-              >
-                <UButton
-                  @click="() => handleFunction(func)"
-                  :color="func.color || 'gray'"
-                  variant="solid"
-                  :class="[
-                    '!rounded-none transition-opacity duration-200',
-                    recentlyClicked[func.functionName] ? 'opacity-50' : 'opacity-100'
-                  ]"
-                  block
+              <!-- Group buttons by their group property -->
+              <template v-if="group.layout === 'sideBySide'">
+                <!-- First row - side by side buttons -->
+                <div class="flex gap-4">
+                  <div v-for="(func, key) in Object.values(group.functions).filter(f => f.group === 'row1')" 
+                    :key="key"
+                    class="flex-1"
+                  >
+                    <UButton
+                      @click="() => handleFunction(func)"
+                      :color="func.color || 'gray'"
+                      variant="solid"
+                      :class="[
+                        '!rounded-none transition-opacity duration-200',
+                        recentlyClicked[func.functionName] ? 'opacity-50' : 'opacity-100'
+                      ]"
+                      block
+                    >
+                      {{ func.label }}
+                    </UButton>
+                  </div>
+                </div>
+                <!-- Second row - full width buttons with larger gap -->
+                <div class="mt-8">
+                  <div v-for="(func, key) in Object.values(group.functions).filter(f => f.group === 'row2')" 
+                    :key="key"
+                  >
+                    <UButton
+                      @click="() => handleFunction(func)"
+                      :color="func.color || 'gray'"
+                      variant="solid"
+                      :class="[
+                        '!rounded-none transition-opacity duration-200',
+                        recentlyClicked[func.functionName] ? 'opacity-50' : 'opacity-100'
+                      ]"
+                      block
+                    >
+                      {{ func.label }}
+                    </UButton>
+                  </div>
+                </div>
+              </template>
+              <!-- Default layout for other groups -->
+              <template v-else>
+                <div 
+                  v-for="(func, key) in group.functions" 
+                  :key="key"
+                  :class="{
+                    'pb-4': !group.layout || group.layout === 'grid'
+                  }"
                 >
-                  {{ func.label }}
-                </UButton>
-              </div>
+                  <UButton
+                    @click="() => handleFunction(func)"
+                    :color="func.color || 'gray'"
+                    variant="solid"
+                    :class="[
+                      '!rounded-none transition-opacity duration-200',
+                      recentlyClicked[func.functionName] ? 'opacity-50' : 'opacity-100'
+                    ]"
+                    block
+                  >
+                    {{ func.label }}
+                  </UButton>
+                </div>
+              </template>
             </div>
           </div>
         </div>
