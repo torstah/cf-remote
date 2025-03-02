@@ -300,6 +300,14 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
     description: "App functions",
     layout: 'grid',
     functions: {
+      startGame: {
+        objectPath: "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
+        functionName: "StartGame",
+        generateTransaction: false,
+        label: "Start Game",
+        description: "Start the game process",
+        color: 'green'
+      },
       quitGame: {
         objectPath:
           "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
@@ -311,7 +319,6 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         requiresConfirm: true,
         confirmMessage: "Are you sure you want to quit the game?"
       },
-      
     },
   },
 };
