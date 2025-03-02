@@ -199,27 +199,20 @@ export const gameFunctionGroups: Record<string, FunctionGroup> = {
         label: "Hide Avatar",
         description: "Hides the avatar",
       },
-      nextStep: {
-        objectPath:
-          "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
-        functionName: "NextStep",
-        generateTransaction: true,
-        label: "Next Step",
-        description: "Go to the next step",
-      },
+      
       setNoAvatarEnabled: {
         objectPath:
           "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
         functionName: "SetNoAvatarEnabled",
         generateTransaction: true,
-        label: "Set No Avatar Enabled",
+        label: "Disable Avatar",
       },
       setNoAvatarDisabled: {
         objectPath:
           "/Game/Maps/_MasterMain._MasterMain:PersistentLevel.BP_RemoteIntermediate_C_1",
         functionName: "SetNoAvatarDisabled",
         generateTransaction: true,
-        label: "Set No Avatar Disabled",
+        label: "Enable Avatar",
       },
       enableParallax: {
         objectPath:
